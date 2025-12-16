@@ -9,11 +9,17 @@ def generate_sql_from_prompt(schema: str, user_prompt: str) -> str:
     """
     Generates a SQL query using Azure OpenAI based on the provided schema and user prompt.
     """
+    ## get mne alll below details from environment variables
+    api_key = os.getenv("AZURE_OPENAI_API_KEY")
+    api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
+    api_version = os.getenv("AZURE_OPENAI_API_VERSION")
+    deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")
 
-    api_key = ""
-    api_base = ""
-    api_version = ""
-    deployment_name = ""
+    # print all variables below
+    print("API Key:", api_key)
+    print("API Base:", api_base)
+    print("API Version:", api_version)
+    print("Deployment Name:", deployment_name)
     
     if not all([api_key, api_base, deployment_name]):
         print("Missing Azure OpenAI credentials in environment variables.")
