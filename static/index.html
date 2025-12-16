@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Analyst</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-sparkles"></i> AI Data Analyst
+            </div>
+            <p class="subtitle">Turn your natural language questions into actionable data insights.</p>
+        </header>
+
+        <main>
+            <div class="input-section glass-card">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="promptInput" placeholder="Ask about sales, products, or customers... (e.g., 'Show me all sales from 2023')" autocomplete="off">
+                    <button id="generateBtn" class="primary-btn">
+                        <span class="btn-text">Generate</span>
+                        <div class="loader hidden"></div>
+                    </button>
+                </div>
+                <div class="suggestions">
+                    <span>Try:</span>
+                    <button class="chip" onclick="setInput('Show me all sales')">All Sales</button>
+                    <button class="chip" onclick="setInput('List electronics products')">Electronics</button>
+                    <button class="chip" onclick="setInput('Customers from USA')">USA Customers</button>
+                    <button class="chip" onclick="setInput('Total revenue')">Total Revenue</button>
+                </div>
+            </div>
+
+            <div id="resultsSection" class="results-section hidden">
+                <div class="sql-display glass-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-code"></i> Generated SQL</h3>
+                        <button class="copy-btn" onclick="copySql()"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <pre><code id="sqlOutput">SELECT * FROM ...</code></pre>
+                </div>
+
+                <div class="data-preview glass-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-table"></i> Data Preview <span id="rowCount" class="badge">0 rows</span></h3>
+                        <a id="downloadLink" href="#" class="download-btn secondary-btn">
+                            <i class="fa-solid fa-file-excel"></i> Download Excel
+                        </a>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="previewTable">
+                            <thead>
+                                <!-- JS will populate -->
+                            </thead>
+                            <tbody>
+                                <!-- JS will populate -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
